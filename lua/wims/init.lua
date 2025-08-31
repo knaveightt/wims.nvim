@@ -3,12 +3,12 @@ local M = {}
 local DEFAULT_PICKER=""
 
 local function load_symbols_file()
-    symbols_list = {}
+    local symbols_list = {}
     return symbols_list
 end
 
 local function insert_symbol_mini_pick()
-    symbols = load_symbols_file() 
+    local symbols = load_symbols_file() 
     print(symbols)
 end
 
