@@ -14,13 +14,28 @@ local function load_symbols_file()
     return symbols_list
 end
 
-local function insert_symbol_mini_pick()
+local function pick_symbol_mini_pick()
     -- load symbols
     local symbols = load_symbols_file()
 
     -- choose symbol and get character
 	local choice = MiniPick.start({ source = { items = symbols } })
 	local character = string.gsub(choice, "\t.*", "")
+
+    return character
+end
+
+local function yank_symbol_mini_pick()
+    -- get character
+    local character = pick_symbol_mini_pick()
+
+    -- yank character
+    vim.fn.setreg('"', character)
+end
+
+local function insert_symbol_mini_pick()
+    -- get character
+    local character = pick_symbol_mini_pick()
 
     -- print character
     insert_symbol_into_line(character)
@@ -37,9 +52,20 @@ function M.setup()
         end
     end, {})
 
+    vim.api.nvim_create_user_command('WimsYankSymbol', function ()
+        if DEFAULT_PICKER == "mini" then
+            yank_symbol_mini_pick()
+        end
+    end, {})
+
     -- for using a specific picker
     vim.api.nvim_create_user_command("WimsInsertSymbolMiniPick", function()
         insert_symbol_mini_pick()
+    end, {})
+
+    -- for using a specific picker
+    vim.api.nvim_create_user_command("WimsYankSymbolMiniPick", function()
+        yank_symbol_mini_pick()
     end, {})
 end
 
