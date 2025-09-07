@@ -8,7 +8,7 @@ local function load_symbols_file()
 end
 
 local function insert_symbol_mini_pick()
-    local symbols = load_symbols_file() 
+    local symbols = load_symbols_file()
     print(symbols)
 end
 
