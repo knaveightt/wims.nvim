@@ -1,33 +1,56 @@
 local M = {}
 
-local DEFAULT_PICKER=""
+local PREFERRED_PICKER=""
+local PICKER
+
+local function insert_symbol(character)
+    if character ~= nil then
+        local pos = vim.api.nvim_win_get_cursor(0)[2]
+        local c_line = vim.api.nvim_get_current_line()
+        local n_line = c_line:sub(0,pos) .. character .. c_line:sub(pos+1)
+        vim.api.nvim_set_current_line(n_line)
+    end
+end
+
+local function yank_symbol(character)
+    if character ~= nil then
+        vim.fn.setreg('"', character)
+    end
+end
 
 function M.setup()
     -- setup defaults (right now only one, so this is a placeholder)
-    DEFAULT_PICKER = "mini"
+    PREFERRED_PICKER = "mini"
+
+    local picker
+    if PREFERRED_PICKER == "mini" then
+        PICKER = require("wims.pickers.mini")
+    else
+        PICKER = require("wims.pickers.mini") -- default
+    end
 
     -- generic insert symbol
     vim.api.nvim_create_user_command('WimsInsertSymbol', function()
-        if DEFAULT_PICKER == "mini" then
-            require("wims.pickers.mini").insert_symbol()
-        end
+        local character = PICKER.pick_symbol()
+        insert_symbol(character)
     end, {})
 
     -- generic yank symbol
     vim.api.nvim_create_user_command('WimsYankSymbol', function ()
-        if DEFAULT_PICKER == "mini" then
-            require("wims.pickers.mini").yank_symbol()
-        end
+        local character = PICKER.pick_symbol()
+        yank_symbol(character)
     end, {})
 
     -- for using a specific picker
     vim.api.nvim_create_user_command("WimsInsertSymbolMiniPick", function()
-        require("wims.pickers.mini").insert_symbol()
+        local character = require("wims.pickers.mini").pick_symbol()
+        insert_symbol(character)
     end, {})
 
     -- for using a specific picker
     vim.api.nvim_create_user_command("WimsYankSymbolMiniPick", function()
-        require("wims.pickers.mini").yank_symbol()
+        local character = require("wims.pickers.mini").pick_symbol()
+        yank_symbol(character)
     end, {})
 end
 
