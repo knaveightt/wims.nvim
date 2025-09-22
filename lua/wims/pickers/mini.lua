@@ -1,5 +1,7 @@
 local M = {}
 
+local MiniPick = require("mini.pick")
+
 function M.pick_symbol()
     local character
     local symbols = require("wims.symbols.symbol_list")
