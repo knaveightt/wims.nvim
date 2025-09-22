@@ -1,0 +1,7 @@
+:WimsInsertSymbol	wims.txt	/*:WimsInsertSymbol*
+:WimsInsertSymbolMiniPick	wims.txt	/*:WimsInsertSymbolMiniPick*
+:WimsYankSymbol	wims.txt	/*:WimsYankSymbol*
+:WimsYankSymbolMiniPick	wims.txt	/*:WimsYankSymbolMiniPick*
+wims-commands	wims.txt	/*wims-commands*
+wims.nvim	wims.txt	/*wims.nvim*
+wims.txt	wims.txt	/*wims.txt*
