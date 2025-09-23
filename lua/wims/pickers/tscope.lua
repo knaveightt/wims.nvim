@@ -26,9 +26,9 @@ function M.pick_symbol(action)
                 character = string.gsub(choice, "\t.*", "")
 
                 if action == "insert" then
-                    require("wims").insert_symbol_now(character)
+                    require("wims.actions").insert_symbol(character)
                 elseif action == "yank" then
-                    require("wims").yank_symbol_now(character)
+                    require("wims.actions").yank_symbol(character)
                 end
             end)
             return true
