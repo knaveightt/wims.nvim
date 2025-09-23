@@ -5,30 +5,42 @@
 wims.nvim manual version 0.1                            *wims.nvim*
 
 ==============================================================================
-1. WIMS Commands					*wims-commands*
+1. WIMS Commands                                        *wims-commands*
 
-							*:WimsInsertSymbol*
+                                                        *:WimsInsertSymbol*
 :WimsInsertSymbol           Launch the default or configured picker to choose
                             a symbol for inserting into the current buffer
                             where the cursor currently is.
 
-							*:WimsYankSymbol*
-:WimsYankSymbol		    Launch the default or configured picker to choose
-			    a symbol for adding to the clipboard (as if you
-			    pressed the 'y' key to 'yank'). You can 
-			    subsequently paste the copied symbol using the 'p'
-			    key to 'paste' in normal mode.
+                                                        *:WimsYankSymbol*
+:WimsYankSymbol             Launch the default or configured picker to choose
+                            a symbol for adding to the clipboard (as if you
+                            pressed the 'y' key to 'yank'). You can 
+                            subsequently paste the copied symbol using the 'p'
+                            key to 'paste' in normal mode.
 
-						    *:WimsInsertSymbolMiniPick*
+                                                *:WimsInsertSymbolMiniPick*
 :WimsInsertSymbolMiniPick   Forces the launching of the Mini.Pick picker to
-			    choose a symbol for inserting into the current 
-			    buffer where the cursor currently is.
+                            choose a symbol for inserting into the current 
+                            buffer where the cursor currently is.
 
-						    *:WimsYankSymbolMiniPick*
-:WimsYankSymbolMiniPick	    Forces the launching of the Mini.Pick picker to
-			    choose a symbol for adding to the clipboard (as
-			    if you pressed the 'y' key to 'yank'). You can
-			    subsequently paste the copied symbol using the 'p'
-			    key to 'paste' in normal mode.
+                                                *:WimsYankSymbolMiniPick*
+:WimsYankSymbolMiniPick     Forces the launching of the Mini.Pick picker to
+                            choose a symbol for adding to the clipboard (as
+                            if you pressed the 'y' key to 'yank'). You can
+                            subsequently paste the copied symbol using the 'p'
+                            key to 'paste' in normal mode.
+
+                                                *:WimsInsertSymbolTelescope*
+:WimsInsertSymbolTelescope  Forces the launching of the telescope picker to
+                            choose a symbol for inserting into the current 
+                            buffer where the cursor currently is.
+
+                                                *:WimsYankSymbolTelescope*
+:WimsYankSymbolTelescope    Forces the launching of the telescope picker to
+                            choose a symbol for adding to the clipboard (as
+                            if you pressed the 'y' key to 'yank'). You can
+                            subsequently paste the copied symbol using the 'p'
+                            key to 'paste' in normal mode.
 
 vim:tw=78:ts=8:noet:ft=help:norl:
