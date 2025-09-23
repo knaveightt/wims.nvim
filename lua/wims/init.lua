@@ -1,15 +1,17 @@
 local M = {}
 
-local PREFERRED_PICKER=""
 local PICKER
 
-function M.setup()
-    -- setup defaults (right now only one, so this is a placeholder)
-    PREFERRED_PICKER = "mini"
-
-    local picker
-    if PREFERRED_PICKER == "mini" then
-        PICKER = require("wims.pickers.mini")
+function M.setup(opts)
+    -- expecting { picker = "mini|telescope" }
+    if opts then
+        if opts.picker == "mini" then
+            PICKER = require("wims.pickers.mini")
+        elseif opts.picker == "telescope" then
+            PICKER = require("wims.pickers.tscope")
+        else
+            PICKER = require("wims.pickers.mini") -- default
+        end
     else
         PICKER = require("wims.pickers.mini") -- default
     end
